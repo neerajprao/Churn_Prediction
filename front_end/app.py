@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import joblib
-import os
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -314,6 +313,4 @@ def predict():
 
 if __name__ == '__main__':
     load_models()
-    import os
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(debug=True)
