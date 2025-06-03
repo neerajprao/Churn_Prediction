@@ -2,14 +2,13 @@
 
 ## Overview
 
-Churn Predictor is a powerful web-based application that predicts customer churn using a combination of traditional machine learning, advanced deep learning, and hybrid quantum-classical models. It is designed to help businesses retain customers by identifying individuals at high risk of leaving based on their profile and behavioral attributes.
+Churn Predictor is a powerful web-based application that predicts customer churn using a combination of traditional machine learning and advanced deep learning models. It is designed to help businesses retain customers by identifying individuals at high risk of leaving based on their profile and behavioral attributes.
 
 ## Features
 
 - Predicts customer churn using:
   - Classical Machine Learning: Random Forest, XGBoost, LightGBM, CatBoost
   - Deep Learning: SAINT, NODE, TabNet, TabTransformer
-  - Quantum Machine Learning: Hybrid Quantum-Classical model using PennyLane and scikit-learn
 - Model comparison with accuracy metrics
 - Interactive UI for inputting customer details
 - Clean API and modular Flask backend
@@ -20,21 +19,29 @@ Churn Predictor is a powerful web-based application that predicts customer churn
 ```
 churn-predictor/
 │
-├── app/                       # Flask backend
-│   ├── static/                # CSS/JS files
-│   ├── templates/             # HTML templates
-│   ├── models/                # Pre-trained ML/DL/QML models (.pt, .pkl)
-│   ├── routes.py              # Flask route handlers
-│   └── utils.py               # Helper functions
+├── dataset/
+│   └── predict-bank-churn.csv   # Dataset for training and evaluation
 │
-├── quantum/                   # Quantum model training scripts
-│   └── hybrid_model.ipynb     # VQC training using PennyLane
+├── front_end/                   # Flask application
+│   ├── app.py                   # Main Flask application file
+│   ├── main.py                  # Entry point to run the Flask app
+│   ├── models/                  # Pre-trained ML/DL models (.pt, .pkl)
+│   ├── static/                  # CSS/JS files and images
+│   │   ├── script.js
+│   │   ├── style.css
+│   │   └── images/
+│   │       └── IMG.png
+│   └── templates/               # HTML templates
+│       ├── index.html
+│       └── models.html
 │
-├── notebooks/                 # EDA, preprocessing, training notebooks
+├── results/
+│   └── BankChurn_Eval_Results.xlsx # Evaluation results of the models
 │
-├── requirements.txt           # Project dependencies
-├── README.md                  # Project documentation
-└── run.py                     # Entry point to run the Flask app
+├── notebooks/                   # EDA, preprocessing, training notebooks (Optional - Add if you have them)
+│
+├── requirements.txt             # Project dependencies
+└── README.md                    # Project documentation
 ```
 
 ## Input Features
@@ -68,11 +75,6 @@ The models use the following customer features:
 - TabNet
 - TabTransformer
 
-### Quantum
-
-- Hybrid VQC model using PennyLane + scikit-learn
-- Simulated on Google Colab with limited qubits and 12 GB RAM
-
 ## How to Run
 
 1. Clone the repository:
@@ -98,10 +100,10 @@ pip install -r requirements.txt
 4. Run the Flask app:
 
 ```bash
-python run.py
+python front_end/main.py
 ```
 
-5. Open your browser and go to `http://localhost:5000`
+5. Open your browser and go to [http://localhost:5000](http://localhost:5000)
 
 ## Sample Output
 
@@ -114,14 +116,20 @@ python run.py
 - Add Explainability with SHAP or LIME
 - Deploy on Streamlit Cloud or Hugging Face Spaces
 - Integrate real-time data ingestion from a CRM or database
-- Expand QML backend to support Qiskit on IBM Q Experience
 
 ## Author
 
-Neeraj P Rao  
+**Neeraj P Rao**  
 Third-Year CSE Student at RV University  
 Machine Learning, Quantum AI, and Full-Stack Enthusiast
 
 ## License
 
 This project is licensed under the MIT License.
+
+## Sources
+
+- [XGBoost Documentation](https://xgboost.readthedocs.io/)
+- [LightGBM Documentation](https://lightgbm.readthedocs.io/)
+- [CatBoost Documentation](https://catboost.ai/docs/)
+- [PyTorch Tabular Models](https://pytorch-tabular.readthedocs.io/)
