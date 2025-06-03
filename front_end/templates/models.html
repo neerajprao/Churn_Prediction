@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='/images/IMG.png') }}" alt="ML Logo" class="logo">
+            <span class="header-text">ChurnPredict</span>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Predictions</a>
+            <a href="{{ url_for('models') }}">Model Info</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Model Information</h1>
+        <div class="models-grid">
+
+            <!-- NODE Model -->
+            <div class="model-card">
+                <div class="model-header" onclick="toggleModel(this)">
+                    <h2>NODE Model</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="model-content">
+                    <p>Neural Oblivious Decision Ensemble (.pt) with a tree-like structure for learning hierarchical representations.</p>
+                    <ul class="model-details">
+                        <li>Accuracy: 0.840852</li>
+                        <li>F1 Score: 0.837802</li>
+                        <li>Combines neural nets with decision trees</li>
+                        <li>Efficient for tabular data</li>
+                        <li>Good generalization with small data</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SAINT Model -->
+            <div class="model-card">
+                <div class="model-header" onclick="toggleModel(this)">
+                    <h2>SAINT Model</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="model-content">
+                    <p>Self-Attention and Intersample Attention Transformer (.pt) model for tabular data classification.</p>
+                    <ul class="model-details">
+                        <li>Accuracy: 0.862363</li>
+                        <li>F1 Score: 0.848548</li>
+                        <li>Uses attention across both features and samples</li>
+                        <li>Inspired by Transformer architecture</li>
+                        <li>Handles mixed data types effectively</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TabTransformer Model -->
+            <div class="model-card">
+                <div class="model-header" onclick="toggleModel(this)">
+                    <h2>TabTransformer Model</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="model-content">
+                    <p>Transformer architecture (.pt) adapted for tabular data with embedding-based feature encoding.</p>
+                    <ul class="model-details">
+                        <li>Accuracy: 0.865695</li>
+                        <li>F1 Score: 0.858654	</li>
+                        <li>Context-aware feature transformation</li>
+                        <li>Effective with categorical data</li>
+                        <li>Flexible and scalable model</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TabNet Model -->
+            <div class="model-card">
+                <div class="model-header" onclick="toggleModel(this)">
+                    <h2>TabNet Model</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="model-content">
+                    <p>Attentive tabular deep learning model (.pt) using sequential attention for feature selection.</p>
+                    <ul class="model-details">
+                        <li>Accuracy: 0.865816</li>
+                        <li>F1 Score: 0.859512	</li>
+                        <li>Interpretable feature learning</li>
+                        <li>Handles large datasets well</li>
+                        <li>Sparse attention mechanism</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Random Forest Model -->
+            <div class="model-card">
+                <div class="model-header" onclick="toggleModel(this)">
+                    <h2>Random Forest Model</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="model-content">
+                    <p>Ensemble model (.pkl) combining multiple decision trees for accurate and stable predictions.</p>
+                    <ul class="model-details">
+                        <li>Accuracy: 0.857303</li>
+                        <li>F1 Score: 0.849677</li>
+                        <li>Reduces overfitting via averaging</li>
+                        <li>High dimensional data support</li>
+                        <li>Feature importance analysis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CatBoost Model -->
+            <div class="model-card">
+                <div class="model-header" onclick="toggleModel(this)">
+                    <h2>CatBoost Model</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="model-content">
+                    <p>Gradient boosting model (.cbm) built for high performance with categorical feature support.</p>
+                    <ul class="model-details">
+                        <li>Accuracy: 0.867937</li>
+                        <li>F1 Score: 0.860373</li>
+                        <li>Handles categorical variables automatically</li>
+                        <li>Less prone to overfitting</li>
+                        <li>Efficient out-of-the-box performance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- LightGBM Model -->
+            <div class="model-card">
+                <div class="model-header" onclick="toggleModel(this)">
+                    <h2>LightGBM Model</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="model-content">
+                    <p>Efficient gradient boosting model (.txt) known for speed and accuracy on large datasets.</p>
+                    <ul class="model-details">
+                        <li>Accuracy: 0.868422</li>
+                        <li>F1 Score: 0.861445</li>
+                        <li>Leaf-wise tree growth</li>
+                        <li>Low memory consumption</li>
+                        <li>Fast training time</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- XGBoost Model -->
+            <div class="model-card">
+                <div class="model-header" onclick="toggleModel(this)">
+                    <h2>XGBoost Model</h2>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="model-content">
+                    <p>Extreme Gradient Boosting model (.json) with regularization and high accuracy.</p>
+                    <ul class="model-details">
+                        <li>Accuracy: 0.866210</li>
+                        <li>F1 Score: 0.859459</li>
+                        <li>Automatic handling of missing values</li>
+                        <li>Regularization to prevent overfitting</li>
+                        <li>Highly optimized for performance</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 ChurnPredict - Advanced Machine Learning Models for Customer Churn Prediction</p>
+    </footer>
+    <script>
+        function toggleModel(element) {
+            const content = element.nextElementSibling;
+            content.classList.toggle('active');
+            const arrow = element.querySelector('.arrow');
+            arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
+        }
+    </script>
+</body>
+</html>
