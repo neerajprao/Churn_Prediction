@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Model Predictions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='/images/IMG.png') }}" alt="ML Logo" class="logo">
+            <span class="header-text">ChurnPredict</span>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Predictions</a>
+            <a href="{{ url_for('models') }}">Model Info</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Customer Churn Prediction</h1>
+        <form id="predictionForm">
+            <div class="input-group">
+                <input type="number" id="creditScore" placeholder="Credit Score (300-850)" min="300" max="850" required>
+                <input type="number" id="age" placeholder="Age (18-100)" min="18" max="100" required>
+                <input type="number" id="tenure" placeholder="Tenure (0-10)" min="0" max="10" required>
+                <input type="number" id="balance" placeholder="Balance" min="0" step="0.01" required>
+                <input type="number" id="numProducts" placeholder="Number of Products (1-4)" min="1" max="4" required>
+                
+                <select id="hasCard" required>
+                    <option value="" disabled selected>Credit Card Status</option>
+                    <option value="1">Has Credit Card</option>
+                    <option value="0">No Credit Card</option>
+                </select>
+        
+                <select id="isActive" required>
+                    <option value="" disabled selected>Activity Status</option>
+                    <option value="1">Active Member</option>
+                    <option value="0">Inactive Member</option>
+                </select>
+        
+                <input type="number" id="salary" placeholder="Estimated Salary" min="0" step="0.01" required>
+        
+                <select id="geography" required>
+                    <option value="" disabled selected>Select Geography</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Spain">Spain</option>
+                </select>
+        
+                <select id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        
+        <div id="loading" class="hidden">
+            <div class="loader"></div>
+            <p>Processing prediction...</p>
+        </div>
+        
+        <div id="results" class="hidden">
+            <h2>Predictions</h2>
+            <p class="prediction-note">0 = Customer stays, 1 = Customer leaves (churns)</p>
+            <div class="predictions-grid">
+                <div class="model-pred">
+                    <h3>NODE</h3>
+                    <p id="node-pred">Loading...</p>
+                </div>
+                <div class="model-pred">
+                    <h3>SAINT</h3>
+                    <p id="saint-pred">Loading...</p>
+                </div>
+                <div class="model-pred">
+                    <h3>TabTransformer</h3>
+                    <p id="tabtransformer-pred">Loading...</p>
+                </div>
+                <div class="model-pred">
+                    <h3>TabNet</h3> 
+                    <p id="tabnet-pred">Loading...</p>
+                </div>
+                <div class="model-pred">
+                    <h3>CatBoost</h3>
+                    <p id="catboost-pred">Loading...</p>
+                </div>
+                <div class="model-pred">
+                    <h3>LightGBM</h3>
+                    <p id="lgbm-pred">Loading...</p>
+                </div>
+                <div class="model-pred">
+                    <h3>Random Forest</h3>
+                    <p id="rf-pred">Loading...</p>
+                </div>
+                <div class="model-pred">
+                    <h3>XGBoost</h3>
+                    <p id="xgb-pred">Loading...</p>
+                </div>
+            </div>
+            
+            <div id="consensus" class="consensus-container">
+                <h3>Consensus Prediction</h3>
+                <div id="consensus-value"></div>
+                <p id="consensus-explanation"></p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 ChurnPredict - Advanced Machine Learning Models for Customer Churn Prediction</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
